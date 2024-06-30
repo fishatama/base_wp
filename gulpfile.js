@@ -35,12 +35,6 @@ const destPaths = {
     js: "dist/js",
     images: "dist/images"
   },
-  demo: {
-    html: "demo",
-    css: "demo/css",
-    js: "mode/js",
-    images: "demo/images"
-  }
 }
 
 // HTMLファイルをdistにコピー
@@ -86,17 +80,6 @@ const copyImages = () => {
         mozjpeg({quality: 85, progressive: true}),
         pngquant({quality: [0.8, 0.95], speed: 1}),
         imageminGif({interlaced: false, optimizationLevel: 3, colors: 180}),
-        // svgo({ 
-        //   plugins: [{
-        //       name: 'removeViewBox',
-        //       active: true
-        //     },{
-        //       name: 'cleanupIDs',
-        //       active: false
-        //     }]
-        // }),{
-        //   verbose: true
-        // }
     ]));
   for (const destination of destinations) {
     stream = stream.pipe(dest(destination));
